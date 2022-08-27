@@ -38,7 +38,7 @@ Here are some of the screenshot of Food Ordering Website.
 1. Landing Page :<br><br> <img src="screenshot/Landing Page.png"><br><br>
 2. SignUp  Page :<br><br> <img src="screenshot/Sign Up Page.png"><br><br>
 3. SignIn Page :<br><br> <img src="screenshot/Sign In Page.png"><br><br>
-4. Home Page : <br><br> <img src="screenshot/HomePage.png"><br><br>
+4. Home Page : <br><br> <img src="screenshot/Homepage.png"><br><br>
 5. Menu List : <br><br> <img src="screenshot/Menu Cart.png"><br><br>
 6. Cart Page : <br><br> <img src="screenshot/My Cart Page.png"><br><br>
 7. Confirmation Page :<br><br> <img src="screenshot/Order Confirmation Page.png"><br><br>

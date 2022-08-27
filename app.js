@@ -19,8 +19,8 @@ app.use(fileUpload());
 const mysql = require('mysql');
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'ROOT_2',
-  password: '1@HelloMoto',
+  user: 'root',
+  password: 'root',
   database: 'foodorderingwesitedb'
 });
 
@@ -245,6 +245,66 @@ app.get("/settings",(req,res) => {
   connection.query('SELECT user_id, user_name FROM users WHERE user_id = ? and user_name = ?', [sid,suname], function (error, results) {
     if(!error && results) {
       res.render('settings',{username: suname, userid: sid, item_count: item_in_cart});
+    }
+  });
+});
+
+// Changing Address
+app.post("/address", (req,res) => {
+  const sid = req.cookies.cookuid;
+  const suname = req.cookies.cookuname;
+  connection.query('SELECT user_id, user_name FROM users WHERE user_id = ? and user_name = ?', [sid,suname], function (error, results) {
+    if(!error && results) {
+      const address=req.body.address;
+      connection.query('UPDATE users SET user_address = ? WHERE user_id = ?',[address,sid], function (error,results_m) {
+        if(!error) {
+          res.render('settings',{username: suname, userid: sid, item_count: item_in_cart});
+        }
+      });
+    }
+    else {
+      res.render('signin');
+    }
+  });
+});
+
+// Changing Contact
+app.post("/contact", (req,res) => {
+  const sid = req.cookies.cookuid;
+  const suname = req.cookies.cookuname;
+  connection.query('SELECT user_id, user_name FROM users WHERE user_id = ? and user_name = ?', [sid,suname], function (error, results) {
+    if(!error && results) {
+      const mobileno=req.body.mobileno;
+      connection.query('UPDATE users SET user_mobileno = ? WHERE user_id = ?',[mobileno,sid], function (error,results_m) {
+        if(!error) {
+          res.render('settings',{username: suname, userid: sid, item_count: item_in_cart});
+        }
+      });
+    }
+    else {
+      res.render('signin');
+    }
+  });
+});
+
+// Changing Password
+app.post("/password", (req,res) => {
+  const sid = req.cookies.cookuid;
+  const suname = req.cookies.cookuname;
+  connection.query('SELECT user_id, user_name FROM users WHERE user_id = ? and user_name = ?', [sid,suname], function (error, results) {
+    if(!error && results) {
+      const new_password=req.body.new_password;
+      const old_password=req.body.old_password;
+      //console.log(old_password,new_password);
+      connection.query('UPDATE users SET user_password = ? WHERE user_id = ? AND user_password = ?',[new_password,sid,old_password], function (error,results_m) {
+        if(!error) {
+          console.log(results_m[0].user_password);
+          res.render('settings',{username: suname, userid: sid, item_count: item_in_cart});
+        }
+      });
+    }
+    else {
+      res.render('signin');
     }
   });
 });
