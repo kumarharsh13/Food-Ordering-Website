@@ -466,6 +466,54 @@ app.post("/admin_view_dispatch_orders", (req,res) => {
 
 });
 
+// Render change price page
+app.get("/admin_change_price", (req,res) => {
+  const sid = req.cookies.cookuid;
+  const suname = req.cookies.cookuname;
+  connection.query('SELECT admin_id, admin_name FROM admin WHERE admin_id = ? and admin_name = ?', [sid,suname], function (error, results) {
+    if(!error && results) {
+      connection.query('SELECT * FROM menu',  function (error, results) {
+        if(!error) {
+          res.render('admin_change_price',{username: req.cookies.cookuname, items: results});
+        }
+      });
+    }
+    else {
+      res.render('signin');
+    }
+  });
+});
+
+app.post("/admin_change_price", (req,res) => {
+  const sid = req.cookies.cookuid;
+  const suname = req.cookies.cookuname;
+  connection.query('SELECT user_id, user_name FROM users WHERE user_id = ? and user_name = ?', [sid,suname], function (error, results) {
+    if(!error && results) {
+      const item_name=req.body.item_name;
+      const new_food_price=req.body.NewFoodPrice;
+      //console.log(item_name,new_food_price);
+      connection.query('SELECT item_name FROM menu WHERE item_name = ?', [item_name], function (error, results1) {
+        if(!error) {
+          connection.query('UPDATE menu SET item_price = ? WHERE item_name = ?',[new_food_price,item_name], function (error,results2) {
+            if(!error) {
+              res.render('adminHomepage');
+            }
+            else {
+              res.status(500).send('Something Went Wrong A');
+            }
+          });
+        }
+        else {
+          res.status(500).send('Something Went Wrong B');
+        }
+      });
+    }
+    else {
+      res.render('adminHomepage');
+    }
+  });
+});
+
 // Rendering Login-Out
 app.get("/logout",(req,res) => {
   res.clearCookie();

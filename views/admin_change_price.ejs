@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Sign In - Hungry To Eat</title>
+    <title>Admin Homepage - Hungry To Eat</title>
     <!-- for icons  -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
     <!-- bootstrap  -->
@@ -36,7 +36,7 @@
                         <button class="menu-toggle"><span></span><span></span></button>
                         <nav class="header-menu">
                             <ul class="menu food-nav-menu">
-                                <li><a href="/index">Home</a></li>
+                                <li><a href="/adminHomePage">Home</a></li>
                                 <li><a href="#about">About</a></li>
                                 <li><a href="#team">Our Team</a></li>
                                 <li><a href="#testimonials">Testimonials</a></li>
@@ -44,8 +44,8 @@
                             </ul>
                         </nav>
                         <div class="header-right">
-                            <a href="/signin.ejs" class="header-btn">
-                                <i class="uil uil-user-md"></i>
+                            <a href="/logout" class="header-username" style="color: #ff8243;" title="Click To Log-Out">
+                                <b><i><%= username %></i></b>
                             </a>
                         </div>
                     </div>
@@ -66,16 +66,24 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="sec-title text-center mb-5">
-                                <h2 class="h2-title">Admin Sign In</h2>
+                                <h2 class="h2-title">Update Food Price</h2>
                                 <div class="sec-title-shape mb-4">
                                     <img src="/images/title-shape.svg" alt="">
                                 </div>
-                                <form action="/admin_signin" method="post">
-                                    <input type="text" placeholder="Enter your Email ID" name="email" required class="form-input" style="width: 450px;"/><br><br>
-                                    <input type="password" placeholder="Password" name="password" required class="form-input" style="width: 450px;"/><br><br>
-                                    <input type="submit" value="Sign In" class="sec-btn" style="color: white; background: orange;" /><br>
+                                <form action="/admin_change_price" method="post" enctype="multipart/form-data">
+                                    <label for="foods_price">
+                                        <select name="item_name" id="item_name" class="form-input">
+                                            <option value="None" >Select Food</option>
+                                            <% let size = items.length; %>
+                                            <% for(let i=0;i<size;i++) { %>
+                                                <option value="<%= items[i].item_name %>"><%= items[i].item_name %></option>
+                                            <% } %>
+                                        </select>
+                                    </label>
+                                    <br><br>
+                                    <input type="text" placeholder="Enter Food New Price" required class="form-input" name="NewFoodPrice" id="NewFoodPrice" style="width: 550px;"/><br><br>
+                                    <input type="submit" value="Update Price" class="sec-btn" style="color: white; background: orange"/><br>
                                 </form>
-                                <br>
                             </div>
                         </div>
                     </div>
@@ -93,7 +101,7 @@
                                 <div class="col-lg-4">
                                     <div class="footer-info">
                                         <div class="footer-logo">
-                                            <a href="/index.ejs">
+                                            <a href="/logout">
                                                 <img src="/images/logo.png" alt="">
                                             </a>
                                         </div>
@@ -193,7 +201,7 @@
     <!-- smooth scroll  -->
     <script src="/javascripts/smooth-scroll.js"></script>
     <!-- custom js  -->
-    <script src="/javascripts/main.js"></script>         
+    <script src="/javascripts/main.js"></script>          
 
 
         </div>
