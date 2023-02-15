@@ -8,6 +8,7 @@ As the name says it all, it a simple full stack project which is used for orderi
 - At user-end he/she can change their basic contact details and as well as there password. 
 - At admins-end he/she can perform two task : 
     - Add new food to the food menu.
+    - Change the price of cuisine as per inflation rate.
     - View and dispatch order of the customers.
 - Admin can also verify the working of the website from his own end.
 - Use cookies for login into the account.
@@ -48,4 +49,5 @@ Here are some of the screenshot of Food Ordering Website.
 11. Admin Sign In Page : <br><br> <img src="screenshot/Admin Login Page.png"><br><br>
 12. Admin Welcome Page :<br><br> <img src="screenshot/Admin Welcome Page.png"><br><br>
 13. Admin Adding Food Page :<br><br> <img src="screenshot/Admin Adding Food Page.png"><br><br>
+14. Changing Price of Cuisine :<br><br> <img src="screenshot/Changing Price of Cuisine.png"><br><br>
 14. Admin Order View & Dispatching Page :<br><br> <img src="screenshot/Admin Viewing and Dispatching Order Page.png"><br><br>
