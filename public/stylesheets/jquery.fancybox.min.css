@@ -596,12 +596,15 @@ body.compensate-for-scrollbar {
         padding-left: 6px;
         padding-right: 6px
     }
+
     .fancybox-slide--image {
         padding: 6px 0
     }
+
     .fancybox-close-small {
         right: -6px
     }
+
     .fancybox-slide--image .fancybox-close-small {
         background: #4e4e4e;
         color: #f2f4f6;
@@ -612,10 +615,12 @@ body.compensate-for-scrollbar {
         top: 0;
         width: 36px
     }
+
     .fancybox-caption {
         padding-left: 12px;
         padding-right: 12px
     }
+
     @supports (padding:max(0px)) {
         .fancybox-caption {
             padding-left: max(12px, env(safe-area-inset-left));
@@ -830,9 +835,11 @@ body.compensate-for-scrollbar {
     .fancybox-thumbs {
         width: 110px
     }
+
     .fancybox-show-thumbs .fancybox-inner {
         right: 110px
     }
+
     .fancybox-thumbs__list a {
         max-width: calc(100% - 10px)
     }

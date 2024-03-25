@@ -18,13 +18,16 @@
     <!-- custom css  -->
     <link rel="stylesheet" href="/stylesheets/style.css">
     <style>
-        table, th, tr, td {
+        table,
+        th,
+        tr,
+        td {
             border: 2px solid black;
             padding: 8px 10px;
             border-radius: 20px;
         }
-        
-        a{
+
+        a {
             color: white;
         }
     </style>
@@ -63,14 +66,19 @@
                             </form>
                             <a href="javascript:void(0)" class="header-btn header-cart">
                                 <i class="uil uil-shopping-bag"></i>
-                                <span class="cart-number" id="cart-number-count"><%= item_count %></span>
+                                <span class="cart-number" id="cart-number-count">
+                                    <%= item_count %>
+                                </span>
                             </a>
                             <div class="dropdown">
-                                <label><button onclick="myFunction()" class="header-username" style="color: #ff8243; padding: 4px 8px;"><b><i><%= userDetails[0].user_name %></i></b></button></label>
+                                <label><button onclick="myFunction()" class="header-username"
+                                        style="color: #ff8243; padding: 4px 8px;"><b><i>
+                                                <%= userDetails[0].user_name %>
+                                            </i></b></button></label>
                                 <div id="myDropdown" class="dropdown-content">
-                                  <a href="/myorders">My Orders</a>
-                                  <a href="/settings">Settings</a>
-                                  <a href="/logout">Sign Out</a>
+                                    <a href="/myorders">My Orders</a>
+                                    <a href="/settings">Settings</a>
+                                    <a href="/logout">Sign Out</a>
                                 </div>
                             </div>
                         </div>
@@ -86,7 +94,7 @@
         <div id="js-scroll-content">
 
             <!-- My Cart starts  -->
-            
+
             <section class="about-sec section" id="cart" style="background-image: url(/images/menu-bg.png);">
                 <div class="container">
                     <div class="row">
@@ -107,47 +115,69 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <td><%= userDetails[0].user_name %></td>
-                                            <td><%= userDetails[0].user_email %></td>
-                                            <td><%= userDetails[0].user_mobileno %></td>
-                                            <td><%= userDetails[0].user_address %></td>
+                                            <td>
+                                                <%= userDetails[0].user_name %>
+                                            </td>
+                                            <td>
+                                                <%= userDetails[0].user_email %>
+                                            </td>
+                                            <td>
+                                                <%= userDetails[0].user_mobileno %>
+                                            </td>
+                                            <td>
+                                                <%= userDetails[0].user_address %>
+                                            </td>
                                         </tbody>
                                     </table>
                                 </div>
-                                <h2 class="h2-title"><%= userDetails[0].user_name %> 's Orders History</h2>
+                                <h2 class="h2-title">
+                                    <%= userDetails[0].user_name %> 's Orders History
+                                </h2>
                                 <div class="sec-title-shape mb-4">
                                     <img src="/images/title-shape.svg" alt="">
                                 </div>
                                 <% let count=0 %>
-                                <table id="mycart">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 5%;">S.No.:</th>
-                                            <th style="width: 10%;">Product</th>
-                                            <th style="width: 25%;">Product Name</th>
-                                            <th style="width: 10%;">Price</th>
-                                            <th style="width: 5%;">Quantity</th>
-                                            <th style="width: 20%;">Total Price</th>
-                                            <th style="width: 15%;">Order Id</th>
-                                            <th style="width: 30%;">Date/Time</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <% for(let i=0;i<items.length;i++) { %>
+                                    <table id="mycart">
+                                        <thead>
                                             <tr>
-                                                <% count++ %>
-                                                <td><%= i+1 %></td>
-                                                <td><img src="/images/dish/<%= items[i].item_img %>" alt="" style="border-radius: 10%; border: 2px solid rgb(68, 66, 66) ; box-shadow: 4px 4px 8px black;"></td>
-                                                <td><%= items[i].item_name %></td>
-                                                <td>₹ <%= items[i].price %></span></td>
-                                                <td><%= items[i].quantity %></td>
-                                                <td>₹<%= items[i].price*items[i].quantity %></td>
-                                                <td>₹<%= items[i].order_id %></td>
-                                                <td><%= items[i].datetime %></td>
+                                                <th style="width: 5%;">S.No.:</th>
+                                                <th style="width: 10%;">Product</th>
+                                                <th style="width: 25%;">Product Name</th>
+                                                <th style="width: 10%;">Price</th>
+                                                <th style="width: 5%;">Quantity</th>
+                                                <th style="width: 20%;">Total Price</th>
+                                                <th style="width: 15%;">Order Id</th>
+                                                <th style="width: 30%;">Date/Time</th>
                                             </tr>
-                                        <% } %>
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            <% for(let i=0;i<items.length;i++) { %>
+                                                <tr>
+                                                    <% count++ %>
+                                                        <td>
+                                                            <%= i+1 %>
+                                                        </td>
+                                                        <td><img src="/images/dish/<%= items[i].item_img %>" alt=""
+                                                                style="border-radius: 10%; border: 2px solid rgb(68, 66, 66) ; box-shadow: 4px 4px 8px black;">
+                                                        </td>
+                                                        <td>
+                                                            <%= items[i].item_name %>
+                                                        </td>
+                                                        <td>₹ <%= items[i].price %></span></td>
+                                                        <td>
+                                                            <%= items[i].quantity %>
+                                                        </td>
+                                                        <td>₹<%= items[i].price*items[i].quantity %>
+                                                        </td>
+                                                        <td>₹<%= items[i].order_id %>
+                                                        </td>
+                                                        <td>
+                                                            <%= items[i].datetime %>
+                                                        </td>
+                                                </tr>
+                                                <% } %>
+                                        </tbody>
+                                    </table>
                             </div>
                         </div>
                     </div>
@@ -156,8 +186,8 @@
             <!-- My Cart ends  -->
 
 
-               <!-- footer starts  -->
-               <footer class="site-footer" id="contact">
+            <!-- footer starts  -->
+            <footer class="site-footer" id="contact">
                 <div class="top-footer section">
                     <div class="sec-wp">
                         <div class="container">
@@ -196,7 +226,7 @@
                                                 <li><a href="#team">Our Team</a></li>
                                                 <li><a href="#testimonials">Testimonials</a></li>
                                                 <li><a href="#contact">Contact</a></li>
-                                
+
                                             </ul>
                                         </div>
                                         <div class="footer-menu">
@@ -218,7 +248,8 @@
                         <div class="row">
                             <div class="col-lg-12 text-center">
                                 <div class="copyright-text">
-                                    <p>Copyright &copy; 2022 <span class="name">Hungry To Eat </span>All Rights Reserved.
+                                    <p>Copyright &copy; 2022 <span class="name">Hungry To Eat </span>All Rights
+                                        Reserved.
                                     </p>
                                 </div>
                             </div>
@@ -264,6 +295,7 @@
     <!-- smooth scroll  -->
     <script src="/javascripts/smooth-scroll.js"></script>
     <!-- custom js  -->
-    <script src="/javascripts/main.js"></script>         
+    <script src="/javascripts/main.js"></script>
 </body>
+
 </html>

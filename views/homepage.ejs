@@ -55,11 +55,14 @@
                                 <span class="cart-number" id="cart-number-count">0</span>
                             </a>
                             <div class="dropdown">
-                                <label><button onclick="myFunction()" class="header-username" style="color: #ff8243; padding: 4px 8px;"><b><i><%= username %></i></b></button></label>
+                                <label><button onclick="myFunction()" class="header-username"
+                                        style="color: #ff8243; padding: 4px 8px;"><b><i>
+                                                <%= username %>
+                                            </i></b></button></label>
                                 <div id="myDropdown" class="dropdown-content">
-                                  <a href="/myorders">My Orders</a>
-                                  <a href="/settings">Settings</a>
-                                  <a href="/logout">Sign Out</a>
+                                    <a href="/myorders">My Orders</a>
+                                    <a href="/settings">Settings</a>
+                                    <a href="/logout">Sign Out</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +94,8 @@
                             <div class="menu-tab text-center">
                                 <ul class="filters">
                                     <div class="filter-active"></div>
-                                    <li class="filter" data-filter=".all, .breakfast, .lunch, .dinner, .beverages, .desserts">
+                                    <li class="filter"
+                                        data-filter=".all, .breakfast, .lunch, .dinner, .beverages, .desserts">
                                         <img src="/images/menu-1.png" alt="">
                                         All
                                     </li>
@@ -121,30 +125,41 @@
                     </div>
                 </div>
                 <div class="menu-list-row">
-                    <div class="row g-xxl-5 bydefault_show" id="menu-dish" style="background-image: url(/images/menu-bg.png);">
+                    <div class="row g-xxl-5 bydefault_show" id="menu-dish"
+                        style="background-image: url(/images/menu-bg.png);">
                         <% for(let i=0;i<items.length;i++) { %>
-                            <div class="col-lg-4 col-sm-6 dish-box-wp <%= items[i].item_category %>" data-cat="breakfast">
+                            <div class="col-lg-4 col-sm-6 dish-box-wp <%= items[i].item_category %>"
+                                data-cat="breakfast">
                                 <div class="dish-box text-center">
                                     <div class="dist-img">
-                                        <img src="/images/dish/<%= items[i].item_img %>" alt="<%= items[i].item_name %>">
+                                        <img src="/images/dish/<%= items[i].item_img %>"
+                                            alt="<%= items[i].item_name %>">
                                     </div>
                                     <div class="dish-rating">
                                         <%= items[i].item_rating %>
-                                        <i class="uil uil-star"></i>
+                                            <i class="uil uil-star"></i>
                                     </div>
                                     <div class="dish-title">
-                                        <h3 class="h3-title"><%= items[i].item_name %></h3>
-                                        <p><%= items[i].item_calories %></p>
+                                        <h3 class="h3-title">
+                                            <%= items[i].item_name %>
+                                        </h3>
+                                        <p>
+                                            <%= items[i].item_calories %>
+                                        </p>
                                     </div>
                                     <div class="dish-info">
                                         <ul>
                                             <li>
                                                 <p>Type</p>
-                                                <b><%= items[i].item_type %></b>
+                                                <b>
+                                                    <%= items[i].item_type %>
+                                                </b>
                                             </li>
                                             <li>
                                                 <p>Persons</p>
-                                                <b><%= items[i].item_serving %></b>
+                                                <b>
+                                                    <%= items[i].item_serving %>
+                                                </b>
                                             </li>
                                         </ul>
                                     </div>
@@ -154,7 +169,8 @@
                                                 <b>₹ <%= items[i].item_price %></b>
                                             </li>
                                             <li>
-                                                <button class="dish-add-btn" id="btn<%= items[i].item_id %>" onClick="addToCart(<%= items[i].item_id %>)">
+                                                <button class="dish-add-btn" id="btn<%= items[i].item_id %>"
+                                                    onClick="addToCart(<%= items[i].item_id %>)">
                                                     <i class="uil uil-plus"></i>
                                                 </button>
                                             </li>
@@ -162,85 +178,85 @@
                                     </div>
                                 </div>
                             </div>
-                        <% } %>    
+                            <% } %>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-               <!-- footer starts  -->
-               <footer class="site-footer" id="contact">
-                <div class="top-footer section">
-                    <div class="sec-wp">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="footer-info">
-                                        <div class="footer-logo">
-                                            <a href="/homepage">
-                                                <img src="/images/logo.png" alt="">
-                                            </a>
-                                        </div>
-                                        <p>You’ll wonder how you ever lived without us.</p>
-                                        <div class="social-icon">
-                                            <ul>
-                                                <li><a href="#"><i class="uil uil-facebook-f"></i></a></li>
-                                                <li><a href="#"><i class="uil uil-instagram"></i></a></li>
-                                                <li><a href="#"><i class="uil uil-youtube"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+    <!-- footer starts  -->
+    <footer class="site-footer" id="contact">
+        <div class="top-footer section">
+            <div class="sec-wp">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="footer-info">
+                                <div class="footer-logo">
+                                    <a href="/homepage">
+                                        <img src="/images/logo.png" alt="">
+                                    </a>
                                 </div>
-                                <div class="col-lg-8">
-                                    <div class="footer-flex-box">
-                                        <div class="footer-table-info">
-                                            <h3 class="h3-title">open hours</h3>
-                                            <ul>
-                                                <li><i class="uil uil-clock"></i> Mon-Thurs : 9am - 22pm</li>
-                                                <li><i class="uil uil-clock"></i> Fri-Sun : 11am - 22pm</li>
-                                            </ul>
-                                        </div>
-                                        <div class="footer-menu food-nav-menu">
-                                            <h3 class="h3-title">Links</h3>
-                                            <ul class="column-2">
-                                                <li> <a href="/homepage" class="footer-active-menu">Home</a></li>
-                                                <li><a href="#about">About</a></li>
-                                                <li><a href="#team">Our Team</a></li>
-                                                <li><a href="#testimonials">Testimonials</a></li>
-                                                <li><a href="#contact">Contact</a></li>
-                                
-                                            </ul>
-                                        </div>
-                                        <div class="footer-menu">
-                                            <h3 class="h3-title">Company</h3>
-                                            <ul>
-                                                <li><a href="#">Terms & Conditions</a></li>
-                                                <li><a href="#">Privacy Policy</a></li>
-                                                <li><a href="#">Cookie Policy</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <p>You’ll wonder how you ever lived without us.</p>
+                                <div class="social-icon">
+                                    <ul>
+                                        <li><a href="#"><i class="uil uil-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="uil uil-instagram"></i></a></li>
+                                        <li><a href="#"><i class="uil uil-youtube"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="footer-flex-box">
+                                <div class="footer-table-info">
+                                    <h3 class="h3-title">open hours</h3>
+                                    <ul>
+                                        <li><i class="uil uil-clock"></i> Mon-Thurs : 9am - 22pm</li>
+                                        <li><i class="uil uil-clock"></i> Fri-Sun : 11am - 22pm</li>
+                                    </ul>
+                                </div>
+                                <div class="footer-menu food-nav-menu">
+                                    <h3 class="h3-title">Links</h3>
+                                    <ul class="column-2">
+                                        <li> <a href="/homepage" class="footer-active-menu">Home</a></li>
+                                        <li><a href="#about">About</a></li>
+                                        <li><a href="#team">Our Team</a></li>
+                                        <li><a href="#testimonials">Testimonials</a></li>
+                                        <li><a href="#contact">Contact</a></li>
+
+                                    </ul>
+                                </div>
+                                <div class="footer-menu">
+                                    <h3 class="h3-title">Company</h3>
+                                    <ul>
+                                        <li><a href="#">Terms & Conditions</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#">Cookie Policy</a></li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="bottom-footer">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <div class="copyright-text">
-                                    <p>Copyright &copy; 2022 <span class="name">Hungry To Eat </span>All Rights Reserved.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="scrolltop"><i class="uil uil-angle-up"></i></button>
-                    </div>
-                </div>
-            </footer>
+            </div>
         </div>
+        <div class="bottom-footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="copyright-text">
+                            <p>Copyright &copy; 2022 <span class="name">Hungry To Eat </span>All Rights Reserved.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <button class="scrolltop"><i class="uil uil-angle-up"></i></button>
+            </div>
+        </div>
+    </footer>
+    </div>
     </div>
 
 
@@ -278,10 +294,11 @@
     <!-- smooth scroll  -->
     <script src="/javascripts/smooth-scroll.js"></script>
     <!-- custom js  -->
-    <script src="/javascripts/main.js"></script> 
+    <script src="/javascripts/main.js"></script>
     <script src="/javascripts/cart.js"></script>
 
-        </div>
+    </div>
     </div>
 </body>
+
 </html>

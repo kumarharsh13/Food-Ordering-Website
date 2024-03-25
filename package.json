@@ -1,9 +1,7 @@
 {
   "name": "food-ordering-website",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "private": true,
-  "description": "A food ordering website",
-  "main": "app.js",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -13,13 +11,11 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
-    "express-fileupload": "^1.4.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "express-fileupload": "^1.4.0",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.16",
     "uuid": "^8.3.2"
-  },
-  "author": "kumarharsh13",
-  "license": "MIT"
+  }
 }

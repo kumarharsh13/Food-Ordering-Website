@@ -16,7 +16,8 @@ body {
     left: auto;
 }
 
-body, html {
+body,
+html {
     overflow-x: hidden;
 }
 
@@ -68,7 +69,8 @@ img {
     margin-right: 0;
 }
 
-.main-navigation .menu li:hover>ul, .main-navigation .menu li.focus>ul {
+.main-navigation .menu li:hover>ul,
+.main-navigation .menu li.focus>ul {
     opacity: 1;
     margin-top: 6px;
     visibility: visible;
@@ -90,7 +92,8 @@ ul {
     width: 200px;
 }
 
-.main-navigation .menu li:hover>ul, .main-navigation .menu li.focus>ul {
+.main-navigation .menu li:hover>ul,
+.main-navigation .menu li.focus>ul {
     left: auto;
 }
 
@@ -107,7 +110,9 @@ ul {
     border-radius: 30px;
 }
 
-.main-navigation .menu li a:hover, .main-navigation .menu li .active-menu, .main-navigation .menu .sub-menu li .active-sub-menu {
+.main-navigation .menu li a:hover,
+.main-navigation .menu li .active-menu,
+.main-navigation .menu .sub-menu li .active-sub-menu {
     color: #ff8243;
     background: #f3f3f5;
     box-shadow: inset 8px 8px 12px #e2e2e2, inset -8px -8px 12px #ffffff;
@@ -172,18 +177,22 @@ button {
     text-align: center;
     margin: 2px;
 }
-  
+
 .dropdown-content a {
     color: black;
     padding: 12px 16px;
     display: block;
 }
-  
-.dropdown a:hover {background-color: #ddd;}
-  
-.show {display: block;}
 
-#myDetails > table{
+.dropdown a:hover {
+    background-color: #ddd;
+}
+
+.show {
+    display: block;
+}
+
+#myDetails>table {
     margin-left: auto;
     margin-right: auto;
 }
@@ -266,14 +275,14 @@ button {
     border: none;
     background: #f8f8f8;
     box-shadow: inset 6px 6px 8px #dadada, inset -6px -6px 8px #ffffff;
-} 
+}
 
 .form-input-radio {
     outline: none !important;
 }
 
 input[type="checkbox"] {
-    
+
     background-color: #f3f3f5;
     margin: 10px;
     font: inherit;
@@ -289,7 +298,7 @@ input[type="checkbox"]:checked {
 }
 
 input[type="radio"] {
-    
+
     background-color: #f3f3f5;
     font: inherit;
     font-size: 12px;
@@ -304,12 +313,11 @@ input[type="radio"]:checked {
     background-color: orange;
 }
 
-input
-* {
+input * {
     -webkit-tap-highlight-color: transparent;
 }
 
- .uil {
+.uil {
     color: #ff8243;
     cursor: pointer;
 }
@@ -330,7 +338,11 @@ input
     .container {
         max-width: 1400px;
     }
-    p, body, button, input {
+
+    p,
+    body,
+    button,
+    input {
         font-size: 18px;
         line-height: 32px;
     }
@@ -340,6 +352,7 @@ input
     .header-right {
         margin-left: 20px;
     }
+
     .main-navigation .menu li {
         margin: 0 3px;
     }
@@ -354,16 +367,20 @@ input
         margin-left: -50px;
         margin-right: 80px;
     }
+
     .header-right {
         margin-left: 10px;
     }
+
     .main-navigation .menu li {
         margin: 0;
     }
+
     .main-navigation .menu li a {
         padding: 4px 15px;
         font-size: 15px;
     }
+
     .header-search-form .form-input {
         width: 170px;
     }
@@ -374,21 +391,26 @@ input
         padding-top: 85px;
         padding-bottom: 85px;
     }
+
     .for-des {
         display: none !important;
     }
+
     .for-mob {
         display: block !important;
     }
+
     .site-header .container {
         max-width: 100%;
         padding: 0;
         height: 100%;
     }
+
     .site-header .container .row {
         margin: 0;
         height: 100%;
     }
+
     .site-header .container .row .col-lg-2 {
         width: auto;
         padding: 0;
@@ -400,6 +422,7 @@ input
         display: flex;
         align-items: center;
     }
+
     .menu-toggle {
         position: absolute;
         top: 50%;
@@ -415,6 +438,7 @@ input
         border-radius: 10px;
         padding: 0 8px;
     }
+
     .menu-toggle span {
         display: block;
         width: 100%;
@@ -425,24 +449,30 @@ input
         border-radius: 5px;
         position: relative;
     }
+
     .menu-toggle span:last-child {
         margin: 0;
     }
+
     .toggled .menu-toggle span:nth-child(1) {
         transform: rotate(45deg);
         top: 5px;
     }
+
     .toggled .menu-toggle span:nth-child(2) {
         transform: rotate(-45deg);
         top: -4px;
     }
+
     .toggled .menu-toggle span:nth-child(3) {
         opacity: 0;
         height: 0;
     }
+
     .toggled .header-menu {
         transform: translateY(0);
     }
+
     .header-menu {
         height: 100vh;
         position: absolute;
@@ -459,66 +489,85 @@ input
         background-position: center;
         background-color: #f3f3f5;
     }
+
     .main-navigation .menu li {
         display: block;
         float: none;
         margin: 0;
         margin-bottom: max(20px, 4vh);
     }
+
     .main-navigation .menu li a {
         display: inline-block;
         font-size: max(16px, 2vh);
     }
+
     .main-navigation .menu .sub-menu {
         max-width: 220px;
         opacity: 1;
         visibility: visible;
         display: none;
     }
+
     .main-navigation .menu .sub-menu li {
         margin-bottom: 5px;
     }
+
     .main-navigation .menu li:last-child {
         margin: 0;
     }
+
     .main-navigation .menu .sub-menu li a {
         color: #ff8243;
     }
+
     .header-btn .header-cart .header-username {
         display: none;
     }
+
     .header-btn {
         margin: 0;
         margin-right: 70px;
     }
+
     .site-header {
         padding: 20px 0;
         box-shadow: 0px 10px 55px #d4d4d4;
     }
-    .site-header.sticky_head, .site-header {
+
+    .site-header.sticky_head,
+    .site-header {
         background: rgb(255 255 255 / 90%);
     }
+
     body {
         height: auto !important;
     }
 }
 
 @media (max-width: 575px) {
-    .container, .container-fluid {
+
+    .container,
+    .container-fluid {
         padding: 0 30px;
     }
 }
 
 @media (max-width: 400px) {
-    .container, .container-fluid {
+
+    .container,
+    .container-fluid {
         padding: 0 15px;
     }
+
     .header-btn {
         margin-right: 56px;
     }
+
     .menu-toggle {
         right: 15px;
     }
+
     .site-header .container .row .col-lg-2 {
         left: 15px;
     }
@@ -538,6 +587,7 @@ input
         bottom: 0;
         right: 0;
     }
+
     #js-scroll-content {
         position: absolute;
         overflow: hidden;
@@ -586,12 +636,15 @@ input
     0% {
         border-radius: 48% 52% 57% 43% / 34% 44% 56% 66%;
     }
+
     25% {
         border-radius: 62% 38% 64% 36% / 34% 55% 45% 66%;
     }
+
     50% {
         border-radius: 43% 57% 51% 49% / 33% 42% 58% 67%;
     }
+
     100% {
         border-radius: 40% 60% 43% 57% / 52% 32% 68% 48%;
     }
@@ -652,7 +705,12 @@ input
     transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: #0d0d25;
     font-family: 'Playfair Display', serif;
     font-weight: 900;
@@ -723,7 +781,11 @@ p {
     position: relative;
 }
 
-.h2-title span, .h3-title span, .h4-title span, .h5-title span, .sub-title span {
+.h2-title span,
+.h3-title span,
+.h4-title span,
+.h5-title span,
+.sub-title span {
     display: block;
 }
 
@@ -770,7 +832,8 @@ p {
     z-index: 2;
 }
 
-.menu-tab ul li, .menu-tab ul .filter-active {
+.menu-tab ul li,
+.menu-tab ul .filter-active {
     display: inline-flex;
     text-transform: capitalize;
     font-size: 18px;
@@ -864,7 +927,8 @@ p {
     color: #bfbfbf;
 }
 
-.dish-info ul, .dist-bottom-row ul {
+.dish-info ul,
+.dist-bottom-row ul {
     display: flex;
     justify-content: space-between;
     text-align: left;
@@ -895,7 +959,8 @@ p {
     font-weight: 600;
 }
 
-.dish-info, .dist-bottom-row {
+.dish-info,
+.dist-bottom-row {
     padding: 0 30px;
 }
 
@@ -956,7 +1021,8 @@ p {
     align-items: center;
 }
 
-.swiper-button-next, .swiper-button-prev {
+.swiper-button-next,
+.swiper-button-prev {
     position: unset;
     width: 60px;
     height: 60px;
@@ -1207,7 +1273,8 @@ p {
 
 /* ***************** footer ****************** */
 
-.top-footer, .bottom-footer {
+.top-footer,
+.bottom-footer {
     border-top: 1px solid rgb(204 204 204 / 40%);
     position: relative;
 }
@@ -1241,7 +1308,8 @@ p {
     text-transform: capitalize;
 }
 
-.footer-menu ul li a:hover, .footer-menu ul li .footer-active-menu {
+.footer-menu ul li a:hover,
+.footer-menu ul li .footer-active-menu {
     color: #ff8243;
 }
 
@@ -1300,7 +1368,11 @@ p {
     .container {
         max-width: 1400px;
     }
-    p, body, button, input {
+
+    p,
+    body,
+    button,
+    input {
         font-size: 18px;
         line-height: 32px;
     }
@@ -1311,21 +1383,26 @@ p {
         font-size: 80px;
         line-height: 90px;
     }
+
     .h3-title {
         font-size: 26px;
         line-height: 36px;
     }
+
     .h4-title {
         font-size: 24px;
         line-height: 34px;
     }
+
     .h2-title {
         font-size: 38px;
         line-height: 48px;
     }
+
     .team-img {
         height: 400px;
     }
+
     .dist-bottom-row ul li b {
         font-size: 25px;
     }
@@ -1335,48 +1412,62 @@ p {
     .main-banner {
         padding: 200px 0;
     }
+
     .banner-img-wp {
         height: 360px;
     }
+
     .dish-box {
         padding: 0 0 40px;
     }
+
     .dist-img img {
         width: 220px;
     }
+
     .dist-img {
         margin-top: -110px;
     }
+
     .dist-bottom-row ul li b {
         font-size: 28px;
     }
+
     .sec-text {
         padding: 0;
     }
+
     .team-img {
         height: 340px;
     }
+
     .testimonials-box {
         padding: 30px 20px;
         margin: 26px 0 30px;
     }
+
     .testimonials-box-img {
         min-width: 80px;
         min-height: 80px;
         margin-top: -80px;
     }
+
     .footer-flex-box>div {
         padding: 0 10px;
     }
+
     .star-rating {
         font-size: 19px;
     }
+
     .testimonial-box-top {
         margin-bottom: 10px;
     }
+
     .menu-box {
         padding: 50px 20px 30px 20px;
     }
+
     .menu-img {
         width: 140px;
     }
@@ -1386,23 +1477,28 @@ p {
     .js-parallax-scene {
         display: none;
     }
+
     .main-banner {
         padding: 140px 0 60px;
     }
+
     .h1-title {
         font-size: 60px;
         line-height: 80px;
     }
+
     .banner-img-wp {
         padding: 0;
         height: 75vw;
         padding-top: 50px;
     }
+
     .menu-tab ul {
         white-space: nowrap;
         overflow: hidden;
         overflow-x: auto;
     }
+
     .menu-tab::after {
         content: "";
         position: absolute;
@@ -1415,72 +1511,92 @@ p {
         border-radius: 0 60px 60px 0;
         background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(0, 0, 0, 1) 100%);
     }
+
     .sec-text {
         margin-top: 40px;
     }
+
     .swiper-button-wp .swiper-button {
         display: none !important;
     }
+
     .testimonials-img img {
         position: unset;
         width: 100%;
     }
+
     .testimonials-img {
         margin-bottom: 60px;
     }
+
     .footer-info {
         margin-bottom: 50px;
     }
+
     .footer-flex-box {
         display: block;
         margin: 0;
     }
+
     .footer-flex-box>div {
         padding: 0;
         margin-bottom: 30px;
     }
+
     .footer-flex-box>div:last-child {
         margin: 0;
     }
+
     .scrolltop {
         bottom: 130px;
     }
+
     .footer-menu ul {
         max-width: 300px;
     }
+
     .swiper-pagination-bullet {
         margin: 0 5px !important;
         width: 8px;
         height: 8px;
     }
+
     .swiper-pagination {
         padding: 6px 20px;
     }
+
     .swiper-button-wp {
         margin-top: 40px;
     }
+
     .swiper-pagination-bullet-active {
         width: 16px;
     }
+
     .dish-title .h3-title {
         display: block;
         min-height: auto;
         margin-bottom: 12px;
     }
+
     .menu-img {
         width: 180px;
         margin-inline: auto;
         margin-bottom: 20px;
     }
+
     #js-scroll-content {
         transform: unset !important;
     }
+
     body {
         height: auto !important;
     }
+
     .menu-tab ul::-webkit-scrollbar {
         height: 0;
     }
+
     .menu-tab {
         position: relative;
         display: flex;
@@ -1493,58 +1609,74 @@ p {
         min-height: 60vw;
         width: auto;
     }
+
     .dist-img img {
         width: 180px;
     }
+
     .dist-img {
         margin-top: -80px;
     }
+
     .menu-tab-wp {
         margin-bottom: 60px;
     }
+
     .dish-box {
         margin: 80px 0 30px;
     }
+
     .team-img {
         height: 430px;
     }
+
     .dish-info ul li p {
         font-size: 16px;
         line-height: 26px;
         margin: 0;
     }
+
     .dish-info ul li b {
         font-size: 14px;
     }
+
     .menu-tab ul li {
         padding: 10px 20px;
     }
 }
 
 @media (max-width: 575px) {
-    .container, .container-fluid {
+
+    .container,
+    .container-fluid {
         padding: 0 30px;
     }
+
     .h1-title {
         font-size: 40px;
         line-height: 60px;
         margin-bottom: 20px;
     }
+
     .h1-title span {
         background-size: 100% 8px;
     }
+
     .dish-box {
         max-width: 340px;
         margin: 80px auto 30px;
         padding: 0 0 30px;
     }
+
     .menu-box {
         display: block;
         text-align: center;
     }
+
     .menu-box-right .dish-title .h3-title {
         padding: 0;
     }
+
     .contact-info a {
         font-size: 18px;
         line-height: 28px;
@@ -1558,13 +1690,17 @@ p {
 }
 
 @media (max-width: 400px) {
-    .container, .container-fluid {
+
+    .container,
+    .container-fluid {
         padding: 0 15px;
     }
+
     .section {
         padding-top: 60px;
         padding-bottom: 60px;
     }
+
     .team-box .h3-title {
         min-height: 72px;
         display: flex;
@@ -1572,6 +1708,7 @@ p {
         text-align: center;
         justify-content: center;
     }
+
     .team-img {
         height: 280px;
     }

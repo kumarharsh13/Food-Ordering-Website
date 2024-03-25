@@ -18,7 +18,10 @@
     <!-- custom css  -->
     <link rel="stylesheet" href="/stylesheets/style.css">
     <style>
-        table, th, tr, td {
+        table,
+        th,
+        tr,
+        td {
             border: 2px solid black;
             padding: 8px 10px;
             border-radius: 20px;
@@ -59,7 +62,9 @@
                             </form>
                             </a>
                             <a href="/logout" class="header-username" style="color: #ff8243;" title="Click To Log-Out">
-                                <b><i><%= username %></i></b>
+                                <b><i>
+                                        <%= username %>
+                                    </i></b>
                             </a>
                         </div>
                     </div>
@@ -74,7 +79,7 @@
         <div id="js-scroll-content">
 
             <!-- Sign In starts  -->
-            
+
             <section class="about-sec section" id="about" style="background-image: url(/images/menu-bg.png);">
                 <div class="container">
                     <div class="row">
@@ -98,28 +103,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <% let size = orders.length; %>
-                                        <% if(size==0) { %>
-                                            <h1>No Orders Are Pending</h1><br><br>
-                                        <% } else { %>
-                                        
-                                            <% for(let i=0;i<size;i++) { %>
-                                                <tr>
-                                                    <td><%= i+1 %></td>
-                                                    <td><%= orders[i].order_id %></td>
-                                                    <td><%= orders[i].user_id %></td>
-                                                    <td><%= orders[i].item_id %></td>
-                                                    <td><%= orders[i].quantity %></td>
-                                                    <td><%= orders[i].price %></td>
-                                                    <td><%= orders[i].datetime %></td>
-                                                    <td><input type="checkbox" class="dispatch form-check-input" name="<%= orders[i].order_id %>" id="dispatch" value="true" onchange="checkingDispatch()"></td>
-                                                </tr>
-                                            <% } %>
-                                        <% } %>    
+                                        <% let size=orders.length; %>
+                                            <% if(size==0) { %>
+                                                <h1>No Orders Are Pending</h1><br><br>
+                                                <% } else { %>
+
+                                                    <% for(let i=0;i<size;i++) { %>
+                                                        <tr>
+                                                            <td>
+                                                                <%= i+1 %>
+                                                            </td>
+                                                            <td>
+                                                                <%= orders[i].order_id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= orders[i].user_id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= orders[i].item_id %>
+                                                            </td>
+                                                            <td>
+                                                                <%= orders[i].quantity %>
+                                                            </td>
+                                                            <td>
+                                                                <%= orders[i].price %>
+                                                            </td>
+                                                            <td>
+                                                                <%= orders[i].datetime %>
+                                                            </td>
+                                                            <td><input type="checkbox" class="dispatch form-check-input"
+                                                                    name="<%= orders[i].order_id %>" id="dispatch"
+                                                                    value="true" onchange="checkingDispatch()"></td>
+                                                        </tr>
+                                                        <% } %>
+                                                            <% } %>
                                     </tbody>
                                 </table>
                             </div>
-                            <button class="sec-btn" onclick="dispatching()" style="margin-left: 35%; width:30% ;color: white; background: orange;">Click To Dispatch</button>
+                            <button class="sec-btn" onclick="dispatching()"
+                                style="margin-left: 35%; width:30% ;color: white; background: orange;">Click To
+                                Dispatch</button>
                         </div>
                     </div>
                 </div>
@@ -127,8 +150,8 @@
             <!-- Sign In ends  -->
 
 
-               <!-- footer starts  -->
-               <footer class="site-footer" id="contact">
+            <!-- footer starts  -->
+            <footer class="site-footer" id="contact">
                 <div class="top-footer section">
                     <div class="sec-wp">
                         <div class="container">
@@ -167,7 +190,7 @@
                                                 <li><a href="#team">Our Team</a></li>
                                                 <li><a href="#testimonials">Testimonials</a></li>
                                                 <li><a href="#contact">Contact</a></li>
-                                
+
                                             </ul>
                                         </div>
                                         <div class="footer-menu">
@@ -189,7 +212,8 @@
                         <div class="row">
                             <div class="col-lg-12 text-center">
                                 <div class="copyright-text">
-                                    <p>Copyright &copy; 2022 <span class="name">Hungry To Eat </span>All Rights Reserved.
+                                    <p>Copyright &copy; 2022 <span class="name">Hungry To Eat </span>All Rights
+                                        Reserved.
                                     </p>
                                 </div>
                             </div>
@@ -205,24 +229,26 @@
     <script>
         let order_id = [];
         function checkingDispatch() {
-            //console.log("Receving");
+            console.log("Receving");
             const checking = document.querySelectorAll(".dispatch");
-            for(let index=0;index<checking.length;index++) {
-                //console.log(checking[index].checked);
-                if(checking[index].checked) {
+            for (let index = 0; index < checking.length; index++) {
+                console.log(checking[index].checked);
+                if (checking[index].checked) {
                     order_id.push(checking[index].name);
-                    //console.log(checking[index].name);
-                    //console.log(order_id[index]);
+                    console.log(checking[index].name);
+                    console.log(order_id[index]);
                 }
             }
         }
 
         function dispatching() {
             let url = "http://localhost:3000/admin_view_dispatch_orders";
-            fetch(url, {method:"POST", headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
-                order_id_s: order_id
-            })});
-            window.location.href="http://localhost:3000/admin_view_dispatch_orders";
+            fetch(url, {
+                method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+                    order_id_s: order_id
+                })
+            });
+            window.location.href = "http://localhost:3000/admin_view_dispatch_orders";
         }
     </script>
     <!-- jquery  -->
@@ -259,10 +285,11 @@
     <!-- smooth scroll  -->
     <script src="/javascripts/smooth-scroll.js"></script>
     <!-- custom js  -->
-    <script src="/javascripts/main.js"></script>          
+    <script src="/javascripts/main.js"></script>
 
 
-        </div>
+    </div>
     </div>
 </body>
+
 </html>
