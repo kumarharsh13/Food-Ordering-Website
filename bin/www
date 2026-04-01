@@ -4,7 +4,9 @@
  * Module dependencies.
  */
 
-var app = require("../app");
+require("dotenv").config();
+
+var app = require("../src/app");
 var debug = require("debug")("food-ordering-website:server");
 var http = require("http");
 
