@@ -48,10 +48,10 @@ exports.updatePassword = async (userId, newPassword) => {
   return result;
 };
 
-exports.findByIdAndPassword = async (userId, password) => {
+exports.findByIdWithPassword = async (id) => {
   const [rows] = await db.query(
-    "SELECT user_id, user_name FROM users WHERE user_id = ? AND user_password = ?",
-    [userId, password]
+    "SELECT user_id, user_name, user_password FROM users WHERE user_id = ?",
+    [id]
   );
   return rows[0] || null;
 };

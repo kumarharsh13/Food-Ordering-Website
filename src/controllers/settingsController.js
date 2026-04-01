@@ -40,7 +40,7 @@ exports.updateContact = async (req, res, next) => {
 
 exports.updatePassword = async (req, res, next) => {
   try {
-    const user = await userModel.findByEmail(req.user.email);
+    const user = await userModel.findByIdWithPassword(req.user.id);
     if (!user) {
       return res.render("signin");
     }
