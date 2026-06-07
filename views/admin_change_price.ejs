@@ -75,14 +75,11 @@
                                 <form action="/admin_change_price" method="post" enctype="multipart/form-data">
                                     <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <label for="foods_price">
-                                        <select name="item_name" id="item_name" class="form-input">
-                                            <option value="None">Select Food</option>
-                                            <% let size=items.length; %>
-                                                <% for(let i=0;i<size;i++) { %>
-                                                    <option value="<%= items[i].item_name %>">
-                                                        <%= items[i].item_name %>
-                                                    </option>
-                                                    <% } %>
+                                        <select name="item_id" id="item_id" class="form-input">
+                                            <option value="">Select Food</option>
+                                            <% items.forEach(item => { %>
+                                                <option value="<%= item.item_id %>"><%= item.item_name %> (₹<%= item.item_price %>)</option>
+                                            <% }) %>
                                         </select>
                                     </label>
                                     <br><br>

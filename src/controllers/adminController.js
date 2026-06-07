@@ -154,16 +154,13 @@ exports.renderChangePricePage = async (req, res, next) => {
 
 exports.changePrice = async (req, res, next) => {
   try {
-    const { item_name, NewFoodPrice } = req.body;
-    const item = await menuModel.findByName(item_name);
-    if (!item) {
-      return res.status(400).send("Item not found");
-    }
-    await menuModel.updatePrice(item_name, NewFoodPrice);
-    res.render("adminHomepage", {
-      username: req.admin.name,
-      userid: req.admin.id,
-    });
+    const { item_id, NewFoodPrice } = req.body;
+    await menuModel.updatePriceById(
+      parseInt(item_id, 10),
+      parseInt(NewFoodPrice, 10),
+    );
+    req.flash("success", "Price updated");
+    res.redirect("/admin_change_price");
   } catch (err) {
     next(err);
   }
