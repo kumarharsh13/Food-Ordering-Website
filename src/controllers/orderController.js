@@ -9,12 +9,7 @@ exports.renderMyOrdersPage = async (req, res, next) => {
   try {
     const userDetails = await userModel.findById(req.user.id);
     const items = await orderDispatchModel.getByUserId(req.user.id);
-    const cartCount = req.session.cart ? req.session.cart.length : 0;
-    res.render("myorders", {
-      userDetails: [userDetails],
-      items,
-      item_count: cartCount,
-    });
+    res.render("myorders", { userDetails: [userDetails], items });
   } catch (err) {
     next(err);
   }

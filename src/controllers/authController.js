@@ -16,7 +16,8 @@ exports.signUp = async (req, res, next) => {
       password: hashedPassword,
       mobile,
     });
-    res.render("signin");
+    req.flash("success", "Account created. Please sign in.");
+    res.redirect("/signin");
   } catch (err) {
     next(err);
   }
@@ -31,11 +32,13 @@ exports.signIn = async (req, res, next) => {
     const { email, password } = req.body;
     const user = await userModel.findByEmail(email);
     if (!user) {
-      return res.render("signin");
+      req.flash("error", "Invalid email or password");
+      return res.redirect("/signin");
     }
     const match = await bcrypt.compare(password, user.user_password);
     if (!match) {
-      return res.render("signin");
+      req.flash("error", "Invalid email or password");
+      return res.redirect("/signin");
     }
     req.session.user = { id: user.user_id, name: user.user_name };
     res.redirect("/homepage");
