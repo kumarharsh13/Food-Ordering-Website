@@ -53,7 +53,7 @@
                             <a href="javascript:void(0)" class="header-btn header-cart">
                                 <i class="uil uil-shopping-bag"></i>
                                 <span class="cart-number" id="cart-number-count">
-                                    <%= item_count %>
+                                    <%= cartCount %>
                                 </span>
                             </a>
                             <div class="dropdown">
@@ -79,6 +79,19 @@
     <div id="viewport">
         <div id="js-scroll-content">
 
+            <% if (locals.messages) { %>
+              <% if (messages.success && messages.success.length) { %>
+                <div style="margin:12px 20px;padding:12px 16px;background:#d4edda;color:#155724;border-radius:6px;font-weight:500;">
+                  <%= messages.success[0] %>
+                </div>
+              <% } %>
+              <% if (messages.error && messages.error.length) { %>
+                <div style="margin:12px 20px;padding:12px 16px;background:#f8d7da;color:#721c24;border-radius:6px;font-weight:500;">
+                  <%= messages.error[0] %>
+                </div>
+              <% } %>
+            <% } %>
+
             <!-- Setting Page Starts -->
             <div style="display: flex; margin-top: 20px;">
                 <section class="about-sec section col-sm-4" id="about">
@@ -91,6 +104,7 @@
                                         <img src="assets/images/title-shape.svg" alt="">
                                     </div>
                                     <form action="/address" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="text" placeholder="Enter your New Address" name="address" required
                                             class="form-input" style="width: 450px;" /><br><br>
                                         <input type="submit" value="Update Address" class="sec-btn"
@@ -113,6 +127,7 @@
                                         <img src="assets/images/title-shape.svg" alt="">
                                     </div>
                                     <form action="/contact" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="text" placeholder="Enter your New Mobile Number" name="mobileno"
                                             required class="form-input" style="width: 450px;" /><br><br>
                                         <input type="submit" value="Update Contact Number" class="sec-btn"
@@ -135,6 +150,7 @@
                                         <img src="assets/images/title-shape.svg" alt="">
                                     </div>
                                     <form action="/password" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="password" placeholder="Old Password" required class="form-input"
                                             name="old_password" id="InputOldPassword" style="width: 450px;" /><br><br>
                                         <input type="password" placeholder="New Password" required class="form-input"
