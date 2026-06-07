@@ -1,4 +1,4 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require("bcryptjs");
 const adminModel = require("../models/adminModel");
 const menuModel = require("../models/menuModel");
 const orderModel = require("../models/orderModel");
@@ -13,16 +13,16 @@ exports.adminSignIn = async (req, res, next) => {
     const { email, password } = req.body;
     const admin = await adminModel.findByEmail(email);
     if (!admin) {
-      req.flash('error', 'Invalid email or password');
-      return res.redirect('/admin_signin');
+      req.flash("error", "Invalid email or password");
+      return res.redirect("/admin_signin");
     }
     const match = await bcrypt.compare(password, admin.admin_password);
     if (!match) {
-      req.flash('error', 'Invalid email or password');
-      return res.redirect('/admin_signin');
+      req.flash("error", "Invalid email or password");
+      return res.redirect("/admin_signin");
     }
     req.session.admin = { id: admin.admin_id, name: admin.admin_name };
-    res.redirect('/adminHomepage');
+    res.redirect("/adminHomepage");
   } catch (err) {
     next(err);
   }
@@ -54,19 +54,30 @@ exports.addFood = async (req, res, next) => {
       FoodRating,
     } = req.body;
 
-    if (!req.files) {
-      return res.status(400).send("Image was not uploaded");
+    if (!req.files || !req.files.FoodImg) {
+      req.flash("error", "Image is required");
+      return res.redirect("/admin_addFood");
     }
 
     const fimage = req.files.FoodImg;
-    if (fimage.mimetype !== "image/jpeg" && fimage.mimetype !== "image/png") {
-      return res.render("admin_addFood", {
-        username: req.admin.name,
-        userid: req.admin.id,
-      });
+    const MAX_SIZE = 5 * 1024 * 1024;
+    if (fimage.size > MAX_SIZE) {
+      req.flash("error", "Image must be under 5 MB");
+      return res.redirect("/admin_addFood");
     }
 
-    await fimage.mv("public/images/dish/" + fimage.name);
+    const { fileTypeFromBuffer } = require("file-type");
+    const detected = await fileTypeFromBuffer(fimage.data);
+    const ALLOWED = ["image/jpeg", "image/png"];
+    if (!detected || !ALLOWED.includes(detected.mime)) {
+      req.flash("error", "Only JPEG and PNG images are allowed");
+      return res.redirect("/admin_addFood");
+    }
+
+    const safeName = `${Date.now()}-${fimage.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+    const uploadPath = `public/images/dish/${safeName}`;
+
+    await fimage.mv(uploadPath);
     await menuModel.addItem({
       name: FoodName,
       type: FoodType,
@@ -75,8 +86,9 @@ exports.addFood = async (req, res, next) => {
       calories: FoodCalories,
       price: FoodPrice,
       rating: FoodRating,
-      img: fimage.name,
+      img: safeName,
     });
+    req.flash("success", "Food item added successfully");
     res.redirect("/admin_addFood");
   } catch (err) {
     next(err);
@@ -99,7 +111,9 @@ exports.renderViewDispatchOrdersPage = async (req, res, next) => {
 exports.dispatchOrders = async (req, res, next) => {
   try {
     const totalOrder = req.body.order_id_s;
-    const unique = [...new Set(Array.isArray(totalOrder) ? totalOrder : [totalOrder])];
+    const unique = [
+      ...new Set(Array.isArray(totalOrder) ? totalOrder : [totalOrder]),
+    ];
 
     for (const orderId of unique) {
       const order = await orderModel.getById(orderId);
