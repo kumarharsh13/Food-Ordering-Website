@@ -5,13 +5,14 @@ const orderModel = require("../models/orderModel");
 exports.renderCart = async (req, res, next) => {
   try {
     const cart = req.session.cart || [];
-    const uniqueIds = [...new Set(cart)];
+    const uniqueIds = [...new Set(cart.map((c) => c.itemId))];
     const items = await menuModel.getByIds(uniqueIds);
-    res.render("cart", {
+    res.render('cart', {
       username: req.user.name,
       userid: req.user.id,
       items,
-      item_count: uniqueIds.length,
+      cart,
+      item_count: cart.length,
     });
   } catch (err) {
     next(err);
@@ -20,8 +21,10 @@ exports.renderCart = async (req, res, next) => {
 
 exports.updateCart = (req, res) => {
   const cartItems = req.body.cart || [];
-  const uniqueItems = [...new Set(cartItems)];
-  req.session.cart = uniqueItems;
+  const normalized = [].concat(cartItems).filter(
+    (item) => item && item.itemId && parseInt(item.qty, 10) > 0
+  );
+  req.session.cart = normalized;
   res.sendStatus(200);
 };
 
