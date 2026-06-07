@@ -96,11 +96,19 @@ exports.addFood = async (req, res, next) => {
 
 exports.renderViewDispatchOrdersPage = async (req, res, next) => {
   try {
-    const orders = await orderModel.getPending();
-    res.render('admin_view_dispatch_orders', {
+    const PAGE_SIZE = 20;
+    const page = Math.max(1, parseInt(req.query.page, 10) || 1);
+    const { rows: orders, total } = await orderModel.getPendingPaged(
+      page,
+      PAGE_SIZE,
+    );
+    const totalPages = Math.ceil(total / PAGE_SIZE);
+    res.render("admin_view_dispatch_orders", {
       username: req.admin.name,
       userid: req.admin.id,
       orders,
+      page,
+      totalPages,
     });
   } catch (err) {
     next(err);
@@ -115,7 +123,7 @@ exports.dispatchOrders = async (req, res, next) => {
       await orderModel.setDispatched(orderId);
     }
     const orders = await orderModel.getPending();
-    res.render('admin_view_dispatch_orders', {
+    res.render("admin_view_dispatch_orders", {
       username: req.admin.name,
       userid: req.admin.id,
       orders,

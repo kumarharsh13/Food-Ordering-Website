@@ -1,9 +1,16 @@
-const db = require('../config/db');
+const db = require("../config/db");
 
-exports.create = async ({ orderId, userId, itemId, quantity, price, datetime }) => {
+exports.create = async ({
+  orderId,
+  userId,
+  itemId,
+  quantity,
+  price,
+  datetime,
+}) => {
   const [result] = await db.query(
     "INSERT INTO orders (order_id, user_id, item_id, quantity, price, datetime, status) VALUES (?, ?, ?, ?, ?, ?, 'pending')",
-    [orderId, userId, itemId, quantity, price, datetime]
+    [orderId, userId, itemId, quantity, price, datetime],
   );
   return result;
 };
@@ -11,20 +18,22 @@ exports.create = async ({ orderId, userId, itemId, quantity, price, datetime }) 
 exports.getPending = async () => {
   const [rows] = await db.query(
     "SELECT * FROM orders WHERE status = 'pending' ORDER BY datetime",
-    undefined
+    undefined,
   );
   return rows;
 };
 
 exports.getById = async (orderId) => {
-  const [rows] = await db.query('SELECT * FROM orders WHERE order_id = ?', [orderId]);
+  const [rows] = await db.query("SELECT * FROM orders WHERE order_id = ?", [
+    orderId,
+  ]);
   return rows[0] || null;
 };
 
 exports.setDispatched = async (orderId) => {
   const [result] = await db.query(
     "UPDATE orders SET status = 'dispatched' WHERE order_id = ?",
-    [orderId]
+    [orderId],
   );
   return result;
 };
@@ -37,7 +46,38 @@ exports.getByUserIdAndStatus = async (userId, status) => {
      JOIN menu ON menu.item_id = orders.item_id
      WHERE orders.user_id = ? AND orders.status = ?
      ORDER BY orders.datetime DESC`,
-    [userId, status]
+    [userId, status],
   );
   return rows;
+};
+
+exports.getPendingPaged = async (page, limit) => {
+  const offset = (page - 1) * limit;
+  const [rows] = await db.query(
+    "SELECT * FROM orders WHERE status = 'pending' ORDER BY datetime LIMIT ? OFFSET ?",
+    [limit, offset],
+  );
+  const [[{ total }]] = await db.query(
+    "SELECT COUNT(*) AS total FROM orders WHERE status = 'pending'",
+  );
+  return { rows, total };
+};
+
+exports.getByUserIdAndStatusPaged = async (userId, status, page, limit) => {
+  const offset = (page - 1) * limit;
+  const [rows] = await db.query(
+    `SELECT orders.order_id, orders.user_id, orders.quantity, orders.price,
+            orders.datetime, orders.status, menu.item_id, menu.item_name, menu.item_img
+     FROM orders
+     JOIN menu ON menu.item_id = orders.item_id
+     WHERE orders.user_id = ? AND orders.status = ?
+     ORDER BY orders.datetime DESC
+     LIMIT ? OFFSET ?`,
+    [userId, status, limit, offset],
+  );
+  const [[{ total }]] = await db.query(
+    "SELECT COUNT(*) AS total FROM orders WHERE user_id = ? AND status = ?",
+    [userId, status],
+  );
+  return { rows, total };
 };

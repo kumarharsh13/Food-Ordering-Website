@@ -178,6 +178,17 @@
                                                 <% } %>
                                         </tbody>
                                     </table>
+                                    <% if (totalPages > 1) { %>
+                                      <div style="margin-top:20px;text-align:center;">
+                                        <% if (page > 1) { %>
+                                          <a href="/myorders?page=<%= page - 1 %>" style="display:inline-block;padding:8px 16px;background:orange;color:white;border-radius:6px;text-decoration:none;margin-right:8px;">&#8592; Prev</a>
+                                        <% } %>
+                                        <span style="font-weight:500;">Page <%= page %> of <%= totalPages %></span>
+                                        <% if (page < totalPages) { %>
+                                          <a href="/myorders?page=<%= page + 1 %>" style="display:inline-block;padding:8px 16px;background:orange;color:white;border-radius:6px;text-decoration:none;margin-left:8px;">Next &#8594;</a>
+                                        <% } %>
+                                      </div>
+                                    <% } %>
                             </div>
                         </div>
                     </div>
