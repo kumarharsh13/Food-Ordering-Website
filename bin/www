@@ -6,6 +6,13 @@
 
 require("dotenv").config();
 
+const REQUIRED_ENV = ['DB_HOST', 'DB_USER', 'DB_PASSWORD', 'DB_NAME', 'SESSION_SECRET'];
+const missing = REQUIRED_ENV.filter((k) => !process.env[k]);
+if (missing.length) {
+  console.error(`Missing required env vars: ${missing.join(', ')}`);
+  process.exit(1);
+}
+
 var app = require("../src/app");
 var debug = require("debug")("food-ordering-website:server");
 var http = require("http");

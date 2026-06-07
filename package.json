@@ -19,7 +19,8 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql2": "^3.6.0",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "winston": "^3.19.0"
   },
   "devDependencies": {
     "jest": "^30.4.2",
