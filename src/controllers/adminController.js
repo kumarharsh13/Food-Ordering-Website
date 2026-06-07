@@ -1,3 +1,4 @@
+const bcrypt = require('bcryptjs');
 const adminModel = require("../models/adminModel");
 const menuModel = require("../models/menuModel");
 const orderModel = require("../models/orderModel");
@@ -10,15 +11,18 @@ exports.renderAdminSignInPage = (req, res) => {
 exports.adminSignIn = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    const admin = await adminModel.findByCredentials(email, password);
+    const admin = await adminModel.findByEmail(email);
     if (!admin) {
-      return res.render("admin_signin");
+      req.flash('error', 'Invalid email or password');
+      return res.redirect('/admin_signin');
+    }
+    const match = await bcrypt.compare(password, admin.admin_password);
+    if (!match) {
+      req.flash('error', 'Invalid email or password');
+      return res.redirect('/admin_signin');
     }
     req.session.admin = { id: admin.admin_id, name: admin.admin_name };
-    res.render("adminHomepage", {
-      username: admin.admin_name,
-      userid: admin.admin_id,
-    });
+    res.redirect('/adminHomepage');
   } catch (err) {
     next(err);
   }
