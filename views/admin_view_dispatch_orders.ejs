@@ -89,6 +89,9 @@
                                 <div class="sec-title-shape mb-4">
                                     <img src="/images/title-shape.svg" alt="">
                                 </div>
+                                <form id="dispatch-form" method="post" action="/admin_view_dispatch_orders">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>" id="csrf-token-value">
+                                </form>
                                 <table id="order">
                                     <thead>
                                         <tr>
@@ -244,7 +247,7 @@
         function dispatching() {
             let url = "http://localhost:3000/admin_view_dispatch_orders";
             fetch(url, {
-                method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+                method: "POST", headers: { 'Content-Type': 'application/json', 'x-csrf-token': document.getElementById('csrf-token-value').value }, body: JSON.stringify({
                     order_id_s: order_id
                 })
             });

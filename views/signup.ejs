@@ -70,6 +70,7 @@
                                     <img src="/images/title-shape.svg" alt="">
                                 </div>
                                 <form action="/signup" method="post">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <input type="text" placeholder="Enter your Name" required class="form-input"
                                         name="name" id="InputName" style="width: 450px;" /><br><br>
                                     <input type="text" placeholder="Enter your Address" required class="form-input"

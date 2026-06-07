@@ -91,6 +91,7 @@
                                         <img src="assets/images/title-shape.svg" alt="">
                                     </div>
                                     <form action="/address" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="text" placeholder="Enter your New Address" name="address" required
                                             class="form-input" style="width: 450px;" /><br><br>
                                         <input type="submit" value="Update Address" class="sec-btn"
@@ -113,6 +114,7 @@
                                         <img src="assets/images/title-shape.svg" alt="">
                                     </div>
                                     <form action="/contact" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="text" placeholder="Enter your New Mobile Number" name="mobileno"
                                             required class="form-input" style="width: 450px;" /><br><br>
                                         <input type="submit" value="Update Contact Number" class="sec-btn"
@@ -135,6 +137,7 @@
                                         <img src="assets/images/title-shape.svg" alt="">
                                     </div>
                                     <form action="/password" method="post">
+                                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                         <input type="password" placeholder="Old Password" required class="form-input"
                                             name="old_password" id="InputOldPassword" style="width: 450px;" /><br><br>
                                         <input type="password" placeholder="New Password" required class="form-input"

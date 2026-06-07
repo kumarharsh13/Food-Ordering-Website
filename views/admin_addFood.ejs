@@ -73,6 +73,7 @@
                                     <img src="/images/title-shape.svg" alt="">
                                 </div>
                                 <form action="/admin_addFood" method="post" enctype="multipart/form-data">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <input type="text" placeholder="Enter Food Name" required class="form-input"
                                         name="FoodName" id="FoodName" style="width: 550px;" /><br><br>
                                     <label><input type="radio" name="FoodType" id="Veg" value="Veg"

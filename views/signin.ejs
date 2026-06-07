@@ -71,6 +71,7 @@
                                     <img src="/images/title-shape.svg" alt="">
                                 </div>
                                 <form action="/signin" method="post">
+                                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
                                     <input type="text" placeholder="Enter your Email ID" name="email" required
                                         class="form-input" style="width: 450px;" /><br><br>
                                     <input type="password" placeholder="Password" name="password" required
