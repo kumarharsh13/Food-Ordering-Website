@@ -2,7 +2,6 @@ const bcrypt = require("bcryptjs");
 const adminModel = require("../models/adminModel");
 const menuModel = require("../models/menuModel");
 const orderModel = require("../models/orderModel");
-const orderDispatchModel = require("../models/orderDispatchModel");
 
 exports.renderAdminSignInPage = (req, res) => {
   res.render("admin_signin");
@@ -97,8 +96,8 @@ exports.addFood = async (req, res, next) => {
 
 exports.renderViewDispatchOrdersPage = async (req, res, next) => {
   try {
-    const orders = await orderModel.getAll();
-    res.render("admin_view_dispatch_orders", {
+    const orders = await orderModel.getPending();
+    res.render('admin_view_dispatch_orders', {
       username: req.admin.name,
       userid: req.admin.id,
       orders,
@@ -111,28 +110,14 @@ exports.renderViewDispatchOrdersPage = async (req, res, next) => {
 exports.dispatchOrders = async (req, res, next) => {
   try {
     const totalOrder = req.body.order_id_s;
-    const unique = [
-      ...new Set(Array.isArray(totalOrder) ? totalOrder : [totalOrder]),
-    ];
-
-    for (const orderId of unique) {
-      const order = await orderModel.getById(orderId);
-      if (order) {
-        await orderDispatchModel.create({
-          orderId: order.order_id,
-          userId: order.user_id,
-          itemId: order.item_id,
-          quantity: order.quantity,
-          price: order.price,
-          datetime: new Date(),
-        });
-        await orderModel.deleteById(order.order_id);
-      }
+    const orderIds = [...new Set([].concat(totalOrder))];
+    for (const orderId of orderIds) {
+      await orderModel.setDispatched(orderId);
     }
-
-    const orders = await orderModel.getAll();
-    res.render("admin_view_dispatch_orders", {
+    const orders = await orderModel.getPending();
+    res.render('admin_view_dispatch_orders', {
       username: req.admin.name,
+      userid: req.admin.id,
       orders,
     });
   } catch (err) {

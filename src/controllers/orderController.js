@@ -1,15 +1,15 @@
-const userModel = require("../models/userModel");
-const orderDispatchModel = require("../models/orderDispatchModel");
+const userModel = require('../models/userModel');
+const orderModel = require('../models/orderModel');
 
 exports.renderConfirmationPage = (req, res) => {
-  res.render("confirmation", { username: req.user.name, userid: req.user.id });
+  res.render('confirmation', { username: req.user.name, userid: req.user.id });
 };
 
 exports.renderMyOrdersPage = async (req, res, next) => {
   try {
     const userDetails = await userModel.findById(req.user.id);
-    const items = await orderDispatchModel.getByUserId(req.user.id);
-    res.render("myorders", { userDetails: [userDetails], items });
+    const items = await orderModel.getByUserIdAndStatus(req.user.id, 'dispatched');
+    res.render('myorders', { userDetails: [userDetails], items });
   } catch (err) {
     next(err);
   }
