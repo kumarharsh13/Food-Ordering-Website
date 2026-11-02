@@ -30,7 +30,7 @@ exports.addItem = async ({
 }) => {
   const [result] = await db.query(
     "INSERT INTO menu (item_name, item_type, item_category, item_serving, item_calories, item_price, item_rating, item_img) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-    [name, type, category, serving, calories, price, rating, img]
+    [name, type, category, serving, calories, price, rating, img],
   );
   return result;
 };
@@ -38,7 +38,7 @@ exports.addItem = async ({
 exports.updatePrice = async (itemName, newPrice) => {
   const [result] = await db.query(
     "UPDATE menu SET item_price = ? WHERE item_name = ?",
-    [newPrice, itemName]
+    [newPrice, itemName],
   );
   return result;
 };
@@ -46,7 +46,15 @@ exports.updatePrice = async (itemName, newPrice) => {
 exports.findByName = async (itemName) => {
   const [rows] = await db.query(
     "SELECT item_name FROM menu WHERE item_name = ?",
-    [itemName]
+    [itemName],
   );
   return rows[0] || null;
+};
+
+exports.updatePriceById = async (itemId, newPrice) => {
+  const [result] = await db.query(
+    "UPDATE menu SET item_price = ? WHERE item_id = ?",
+    [newPrice, itemId],
+  );
+  return result;
 };
